@@ -32,3 +32,4 @@ Please consider to write correct and "good" code if cannot managed to write a "w
 * All the 5 additional score points should also be OK.
 * I had to rush a little bit to deliver everythin, so I didn't have the time I'd like to test the features. I now the app has one annoying bug that sometimes shows the first cell duplicated. But it is certainly an easy fix.
 * I didn't have time to do the iPad version.
+* I followed orientation best practices, but I didn't really explore using the app in landscape mode (it should be working though)
