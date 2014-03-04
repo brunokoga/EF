@@ -42,6 +42,11 @@
 		D350127E18C61E5F00913EBC /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D350126C18C61E5F00913EBC /* UIWebView+AFNetworking.m */; };
 		D350128218C61EF400913EBC /* EFSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D350128118C61EF400913EBC /* EFSettings.m */; };
 		D350128618C6206F00913EBC /* EFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D350128518C6206F00913EBC /* EFHTTPSessionManager.m */; };
+		D350128918C624A500913EBC /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D350128818C624A500913EBC /* Storyboard_iPhone.storyboard */; };
+		D350128B18C624C000913EBC /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D350128A18C624C000913EBC /* Storyboard_iPad.storyboard */; };
+		D350128F18C6250200913EBC /* EFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D350128E18C6250200913EBC /* EFBaseViewController.m */; };
+		D350129218C6252D00913EBC /* EFRSSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D350129118C6252D00913EBC /* EFRSSListViewController.m */; };
+		D350129518C6253A00913EBC /* EFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D350129418C6253A00913EBC /* EFDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +120,14 @@
 		D350128118C61EF400913EBC /* EFSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFSettings.m; path = Classes/Settings/EFSettings.m; sourceTree = "<group>"; };
 		D350128418C6206F00913EBC /* EFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFHTTPSessionManager.h; path = Classes/Connection/EFHTTPSessionManager.h; sourceTree = "<group>"; };
 		D350128518C6206F00913EBC /* EFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFHTTPSessionManager.m; path = Classes/Connection/EFHTTPSessionManager.m; sourceTree = "<group>"; };
+		D350128818C624A500913EBC /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Resources/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
+		D350128A18C624C000913EBC /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPad.storyboard; sourceTree = "<group>"; };
+		D350128D18C6250200913EBC /* EFBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFBaseViewController.h; path = "Classes/View Controllers/EFBaseViewController.h"; sourceTree = "<group>"; };
+		D350128E18C6250200913EBC /* EFBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFBaseViewController.m; path = "Classes/View Controllers/EFBaseViewController.m"; sourceTree = "<group>"; };
+		D350129018C6252D00913EBC /* EFRSSListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFRSSListViewController.h; path = "Classes/View Controllers/EFRSSListViewController.h"; sourceTree = "<group>"; };
+		D350129118C6252D00913EBC /* EFRSSListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSListViewController.m; path = "Classes/View Controllers/EFRSSListViewController.m"; sourceTree = "<group>"; };
+		D350129318C6253A00913EBC /* EFDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFDetailViewController.h; path = "Classes/View Controllers/EFDetailViewController.h"; sourceTree = "<group>"; };
+		D350129418C6253A00913EBC /* EFDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFDetailViewController.m; path = "Classes/View Controllers/EFDetailViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +198,13 @@
 				D350121818C61DB300913EBC /* Supporting Files */,
 				D350128318C6202F00913EBC /* Settings */,
 				D350128718C6207400913EBC /* Connection */,
+				D350128C18C624E500913EBC /* Storyboards */,
+				D350128D18C6250200913EBC /* EFBaseViewController.h */,
+				D350128E18C6250200913EBC /* EFBaseViewController.m */,
+				D350129018C6252D00913EBC /* EFRSSListViewController.h */,
+				D350129118C6252D00913EBC /* EFRSSListViewController.m */,
+				D350129318C6253A00913EBC /* EFDetailViewController.h */,
+				D350129418C6253A00913EBC /* EFDetailViewController.m */,
 			);
 			path = "EF RSS";
 			sourceTree = "<group>";
@@ -308,6 +328,15 @@
 			name = Connection;
 			sourceTree = "<group>";
 		};
+		D350128C18C624E500913EBC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D350128818C624A500913EBC /* Storyboard_iPhone.storyboard */,
+				D350128A18C624C000913EBC /* Storyboard_iPad.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -385,7 +414,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D350121C18C61DB300913EBC /* InfoPlist.strings in Resources */,
+				D350128918C624A500913EBC /* Storyboard_iPhone.storyboard in Resources */,
 				D350122718C61DB300913EBC /* Images.xcassets in Resources */,
+				D350128B18C624C000913EBC /* Storyboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,12 +436,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D350127C18C61E5F00913EBC /* UIProgressView+AFNetworking.m in Sources */,
+				D350129218C6252D00913EBC /* EFRSSListViewController.m in Sources */,
 				D350127A18C61E5F00913EBC /* UIButton+AFNetworking.m in Sources */,
 				D350127D18C61E5F00913EBC /* UIRefreshControl+AFNetworking.m in Sources */,
 				D350127918C61E5F00913EBC /* UIAlertView+AFNetworking.m in Sources */,
 				D350127618C61E5F00913EBC /* CWStatusBarNotification.m in Sources */,
 				D350126D18C61E5F00913EBC /* AFHTTPRequestOperation.m in Sources */,
 				D350121E18C61DB300913EBC /* main.m in Sources */,
+				D350129518C6253A00913EBC /* EFDetailViewController.m in Sources */,
 				D350126E18C61E5F00913EBC /* AFHTTPRequestOperationManager.m in Sources */,
 				D350127018C61E5F00913EBC /* AFNetworkReachabilityManager.m in Sources */,
 				D350127B18C61E5F00913EBC /* UIImageView+AFNetworking.m in Sources */,
@@ -418,6 +451,7 @@
 				D350127818C61E5F00913EBC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D350127218C61E5F00913EBC /* AFURLConnectionOperation.m in Sources */,
 				D350128618C6206F00913EBC /* EFHTTPSessionManager.m in Sources */,
+				D350128F18C6250200913EBC /* EFBaseViewController.m in Sources */,
 				D350127118C61E5F00913EBC /* AFSecurityPolicy.m in Sources */,
 				D350126F18C61E5F00913EBC /* AFHTTPSessionManager.m in Sources */,
 				D350128218C61EF400913EBC /* EFSettings.m in Sources */,

@@ -9,7 +9,7 @@
         <attribute name="lastBuildDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RSSItem" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RSSItem" inverseName="feed" inverseEntity="RSSItem" syncable="YES"/>
     </entity>
     <entity name="RSSItem" syncable="YES">
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,9 +18,10 @@
         <attribute name="media" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="publicationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="feed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RSSFeed" inverseName="items" inverseEntity="RSSFeed" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RSSItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="RSSFeed" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RSSItem" positionX="160" positionY="192" width="128" height="148"/>
+        <element name="RSSFeed" positionX="-234" positionY="234" width="128" height="178"/>
     </elements>
 </model>
