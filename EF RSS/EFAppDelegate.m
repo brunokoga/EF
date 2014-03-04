@@ -7,6 +7,7 @@
 //
 
 #import "EFAppDelegate.h"
+#import "EFRSSDownloaderManager.h"
 
 @implementation EFAppDelegate
 
@@ -16,7 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    return YES;
+  //downloads the rss feed
+  [[EFRSSDownloaderManager sharedManager] download];
+  
+  return YES;
 }
 
 

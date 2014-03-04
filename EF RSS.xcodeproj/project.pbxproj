@@ -47,6 +47,7 @@
 		D350128F18C6250200913EBC /* EFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D350128E18C6250200913EBC /* EFBaseViewController.m */; };
 		D350129218C6252D00913EBC /* EFRSSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D350129118C6252D00913EBC /* EFRSSListViewController.m */; };
 		D350129518C6253A00913EBC /* EFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D350129418C6253A00913EBC /* EFDetailViewController.m */; };
+		D350129818C6265400913EBC /* EFRSSDownloaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D350129718C6265400913EBC /* EFRSSDownloaderManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,8 @@
 		D350129118C6252D00913EBC /* EFRSSListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSListViewController.m; path = "Classes/View Controllers/EFRSSListViewController.m"; sourceTree = "<group>"; };
 		D350129318C6253A00913EBC /* EFDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFDetailViewController.h; path = "Classes/View Controllers/EFDetailViewController.h"; sourceTree = "<group>"; };
 		D350129418C6253A00913EBC /* EFDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFDetailViewController.m; path = "Classes/View Controllers/EFDetailViewController.m"; sourceTree = "<group>"; };
+		D350129618C6265400913EBC /* EFRSSDownloaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFRSSDownloaderManager.h; path = Classes/Connection/EFRSSDownloaderManager.h; sourceTree = "<group>"; };
+		D350129718C6265400913EBC /* EFRSSDownloaderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSDownloaderManager.m; path = Classes/Connection/EFRSSDownloaderManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +325,8 @@
 		D350128718C6207400913EBC /* Connection */ = {
 			isa = PBXGroup;
 			children = (
+				D350129618C6265400913EBC /* EFRSSDownloaderManager.h */,
+				D350129718C6265400913EBC /* EFRSSDownloaderManager.m */,
 				D350128418C6206F00913EBC /* EFHTTPSessionManager.h */,
 				D350128518C6206F00913EBC /* EFHTTPSessionManager.m */,
 			);
@@ -437,6 +442,7 @@
 			files = (
 				D350127C18C61E5F00913EBC /* UIProgressView+AFNetworking.m in Sources */,
 				D350129218C6252D00913EBC /* EFRSSListViewController.m in Sources */,
+				D350129818C6265400913EBC /* EFRSSDownloaderManager.m in Sources */,
 				D350127A18C61E5F00913EBC /* UIButton+AFNetworking.m in Sources */,
 				D350127D18C61E5F00913EBC /* UIRefreshControl+AFNetworking.m in Sources */,
 				D350127918C61E5F00913EBC /* UIAlertView+AFNetworking.m in Sources */,
