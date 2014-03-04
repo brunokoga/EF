@@ -11,6 +11,7 @@
 #import "EFRSSItemCell.h"
 #import "RSSItem.h"
 #import "EFDetailViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface EFRSSListViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -139,6 +140,7 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
 - (void)configureCell:(EFRSSItemCell *)cell forItem:(RSSItem *)item {
   cell.titleLabel.text = item.title;
   cell.descriptionLabel.text = item.itemDescription;
+  [cell.imageView setImageWithURL:[NSURL URLWithString:item.media]];
 }
 
 #pragma mark - UITableViewDataSource

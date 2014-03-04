@@ -7,8 +7,6 @@
 //
 
 #import "EFRSSParser.h"
-#import "EFCoreDataManager.h"
-
 @implementation EFRSSParser
 
 - (NSArray *)feedItemsFromXMLParser:(NSXMLParser *)XMLParser
@@ -34,6 +32,10 @@ foundCharacters:(NSString *)string
 static NSString *kEFRSSXMLParserTitle = @"title";
 static NSString *kEFRSSXMLParserSummary = @"description";
 static NSString *kEFRSSXMLParserLink = @"link";
+static NSString *kEFRSSXMLParserGUID = @"guid";
+static NSString *kEFRSSXMLParserImage = @"media:thumbnail";
+static NSString *kEFRSSXMLParserPubDate = @"pubDate";
+
 
 - (id)init
 {
@@ -51,9 +53,10 @@ didStartElement:(NSString *)elementName
  qualifiedName:(NSString *)qualifiedName
     attributes:(NSDictionary *)attributeDict
 {
+  //TODO: refactor this to be something smarter :)
   if ([elementName isEqualToString:self.entryElementName])
   {
-    self.currentRSSObject = [[EFCoreDataManager sharedManager] newItem];
+    self.currentRSSObject = [EFNonPersistentRSSItem new];
   }
   else if ([elementName isEqualToString:kEFRSSXMLParserTitle])
   {
@@ -69,6 +72,16 @@ didStartElement:(NSString *)elementName
   {
     self.currentElement = kEFRSSXMLParserLink;
     self.currentElementValue = [NSMutableString new];
+  }
+  else if ([elementName isEqualToString:kEFRSSXMLParserGUID])
+  {
+    self.currentElement = kEFRSSXMLParserGUID;
+    self.currentElementValue = [NSMutableString new];
+  }
+  else if ([elementName isEqualToString:kEFRSSXMLParserImage])
+  {
+    self.currentElement = kEFRSSXMLParserImage;
+    self.currentElementValue = [[NSMutableString alloc] initWithString:[attributeDict objectForKey:@"url"]];
   }
 }
 
@@ -95,6 +108,13 @@ didStartElement:(NSString *)elementName
   else if ([elementName isEqualToString:kEFRSSXMLParserLink])
   {
     self.currentRSSObject.link = [self.currentElementValue copy];
+  }
+  else if ([elementName isEqualToString:kEFRSSXMLParserGUID])
+  {
+    self.currentRSSObject.guid = [self.currentElementValue copy];
+  } else if ([elementName isEqualToString:kEFRSSXMLParserImage])
+  {
+    self.currentRSSObject.media = [self.currentElementValue copy];
   }
 }
 

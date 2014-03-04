@@ -23,7 +23,10 @@
 - (IBAction)actionButtonTouched:(id)sender {
   UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Open with...", @"")
                                                            delegate:self
-                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:@"Safari", @"More options", nil];
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:
+                                NSLocalizedString(@"Safari",@""),
+                                NSLocalizedString(@"More options", @""),
+                                nil];
   [actionSheet showInView:self.view];
 
 }

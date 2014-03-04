@@ -54,6 +54,9 @@
 		D350129218C6252D00913EBC /* EFRSSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D350129118C6252D00913EBC /* EFRSSListViewController.m */; };
 		D350129518C6253A00913EBC /* EFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D350129418C6253A00913EBC /* EFDetailViewController.m */; };
 		D350129818C6265400913EBC /* EFRSSDownloaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D350129718C6265400913EBC /* EFRSSDownloaderManager.m */; };
+		D3545B0D18C64AAD000747F1 /* EFNonPersistentRSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D3545B0C18C64AAD000747F1 /* EFNonPersistentRSSItem.m */; };
+		D3545B1018C64B80000747F1 /* EFRSSPersister.m in Sources */ = {isa = PBXBuildFile; fileRef = D3545B0F18C64B80000747F1 /* EFRSSPersister.m */; };
+		D3545B1318C651B3000747F1 /* EFReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3545B1218C651B3000747F1 /* EFReachabilityManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +152,12 @@
 		D350129418C6253A00913EBC /* EFDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFDetailViewController.m; path = "Classes/View Controllers/EFDetailViewController.m"; sourceTree = "<group>"; };
 		D350129618C6265400913EBC /* EFRSSDownloaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFRSSDownloaderManager.h; path = Classes/Connection/EFRSSDownloaderManager.h; sourceTree = "<group>"; };
 		D350129718C6265400913EBC /* EFRSSDownloaderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSDownloaderManager.m; path = Classes/Connection/EFRSSDownloaderManager.m; sourceTree = "<group>"; };
+		D3545B0B18C64AAD000747F1 /* EFNonPersistentRSSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFNonPersistentRSSItem.h; path = Classes/Entities/EFNonPersistentRSSItem.h; sourceTree = "<group>"; };
+		D3545B0C18C64AAD000747F1 /* EFNonPersistentRSSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFNonPersistentRSSItem.m; path = Classes/Entities/EFNonPersistentRSSItem.m; sourceTree = "<group>"; };
+		D3545B0E18C64B80000747F1 /* EFRSSPersister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFRSSPersister.h; path = "Classes/Core Data/EFRSSPersister.h"; sourceTree = "<group>"; };
+		D3545B0F18C64B80000747F1 /* EFRSSPersister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSPersister.m; path = "Classes/Core Data/EFRSSPersister.m"; sourceTree = "<group>"; };
+		D3545B1118C651B3000747F1 /* EFReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFReachabilityManager.h; path = Classes/Connection/EFReachabilityManager.h; sourceTree = "<group>"; };
+		D3545B1218C651B3000747F1 /* EFReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFReachabilityManager.m; path = Classes/Connection/EFReachabilityManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +208,8 @@
 				D32155D218C62CA30091D3E1 /* RSSItem.m */,
 				D32155CE18C62CA30091D3E1 /* RSSFeed.h */,
 				D32155CF18C62CA30091D3E1 /* RSSFeed.m */,
+				D3545B0B18C64AAD000747F1 /* EFNonPersistentRSSItem.h */,
+				D3545B0C18C64AAD000747F1 /* EFNonPersistentRSSItem.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -262,6 +273,8 @@
 				D32155C718C629A20091D3E1 /* View Controllers */,
 				D32155CB18C62C570091D3E1 /* EFRSSParser.h */,
 				D32155CC18C62C570091D3E1 /* EFRSSParser.m */,
+				D3545B0E18C64B80000747F1 /* EFRSSPersister.h */,
+				D3545B0F18C64B80000747F1 /* EFRSSPersister.m */,
 			);
 			path = "EF RSS";
 			sourceTree = "<group>";
@@ -383,6 +396,8 @@
 				D350129718C6265400913EBC /* EFRSSDownloaderManager.m */,
 				D350128418C6206F00913EBC /* EFHTTPSessionManager.h */,
 				D350128518C6206F00913EBC /* EFHTTPSessionManager.m */,
+				D3545B1118C651B3000747F1 /* EFReachabilityManager.h */,
+				D3545B1218C651B3000747F1 /* EFReachabilityManager.m */,
 			);
 			name = Connection;
 			sourceTree = "<group>";
@@ -495,12 +510,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D350127C18C61E5F00913EBC /* UIProgressView+AFNetworking.m in Sources */,
+				D3545B1318C651B3000747F1 /* EFReachabilityManager.m in Sources */,
 				D350129218C6252D00913EBC /* EFRSSListViewController.m in Sources */,
 				D350129818C6265400913EBC /* EFRSSDownloaderManager.m in Sources */,
 				D350127A18C61E5F00913EBC /* UIButton+AFNetworking.m in Sources */,
 				D350127D18C61E5F00913EBC /* UIRefreshControl+AFNetworking.m in Sources */,
 				D350127918C61E5F00913EBC /* UIAlertView+AFNetworking.m in Sources */,
 				D350127618C61E5F00913EBC /* CWStatusBarNotification.m in Sources */,
+				D3545B1018C64B80000747F1 /* EFRSSPersister.m in Sources */,
 				D350126D18C61E5F00913EBC /* AFHTTPRequestOperation.m in Sources */,
 				D32155D018C62CA30091D3E1 /* RSSFeed.m in Sources */,
 				D350121E18C61DB300913EBC /* main.m in Sources */,
@@ -521,6 +538,7 @@
 				D32155D718C62FA10091D3E1 /* EFCoreDataManager.m in Sources */,
 				D350126F18C61E5F00913EBC /* AFHTTPSessionManager.m in Sources */,
 				D350128218C61EF400913EBC /* EFSettings.m in Sources */,
+				D3545B0D18C64AAD000747F1 /* EFNonPersistentRSSItem.m in Sources */,
 				D350127318C61E5F00913EBC /* AFURLRequestSerialization.m in Sources */,
 				D350127518C61E5F00913EBC /* AFURLSessionManager.m in Sources */,
 				D350127E18C61E5F00913EBC /* UIWebView+AFNetworking.m in Sources */,

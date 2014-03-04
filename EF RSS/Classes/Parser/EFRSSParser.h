@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RSSItem.h"
+#import "EFNonPersistentRSSItem.h"
 
 @interface EFRSSParser : NSObject <NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSMutableArray *rssItems;
-@property (nonatomic, strong) RSSItem *currentRSSObject;
+@property (nonatomic, strong) EFNonPersistentRSSItem *currentRSSObject;
 @property (nonatomic, strong) NSString *currentElement;
 @property (nonatomic, strong) NSMutableString *currentElementValue;
 

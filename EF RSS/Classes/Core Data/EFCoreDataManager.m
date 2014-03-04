@@ -70,6 +70,7 @@
   id entity = [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self.managedObjectContext];
   return entity;
 }
+
 - (id)newFeed {
   return [self newEntityForName:@"RSSFeed"];
 }
@@ -79,11 +80,31 @@
 }
 
 - (id)newFeedWithFeedURL:(NSString *)feedURL {
+  
   return nil;
 }
 
 - (id)newItemWithGUID:(NSString *)guid {
-  return nil;
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"guid LIKE %@", guid];
+  
+  NSArray *result;
+  
+  NSFetchRequest *fetchRequest = [NSFetchRequest new];
+  [fetchRequest setEntity:[NSEntityDescription entityForName:@"RSSItem"
+                                      inManagedObjectContext:self.managedObjectContext]];
+  
+      [fetchRequest setPredicate:predicate];
+  
+  
+  NSError *error;
+  
+  result = [self.managedObjectContext executeFetchRequest:fetchRequest
+                                                    error:&error];
+  
+  if ([result count] == 1) {
+    return result[0];
+  }
+  return [self newItem];
 }
 
 @end
