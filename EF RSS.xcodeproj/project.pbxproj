@@ -13,6 +13,7 @@
 		D32155D318C62CA30091D3E1 /* RSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155D218C62CA30091D3E1 /* RSSItem.m */; };
 		D32155D718C62FA10091D3E1 /* EFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155D618C62FA10091D3E1 /* EFCoreDataManager.m */; };
 		D32155DA18C63A210091D3E1 /* EFRSSItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155D918C63A210091D3E1 /* EFRSSItemCell.m */; };
+		D32A9EE318C6691C001BC9DB /* EFTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = D32A9EE218C6691C001BC9DB /* EFTheme.m */; };
 		D350121018C61DB300913EBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350120F18C61DB300913EBC /* Foundation.framework */; };
 		D350121218C61DB300913EBC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350121118C61DB300913EBC /* CoreGraphics.framework */; };
 		D350121418C61DB300913EBC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350121318C61DB300913EBC /* UIKit.framework */; };
@@ -83,6 +84,8 @@
 		D32155D618C62FA10091D3E1 /* EFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFCoreDataManager.m; path = "Classes/Core Data/EFCoreDataManager.m"; sourceTree = "<group>"; };
 		D32155D818C63A210091D3E1 /* EFRSSItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFRSSItemCell.h; path = "EF RSS/Classes/Views/EFRSSItemCell.h"; sourceTree = "<group>"; };
 		D32155D918C63A210091D3E1 /* EFRSSItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSItemCell.m; path = "EF RSS/Classes/Views/EFRSSItemCell.m"; sourceTree = "<group>"; };
+		D32A9EE118C6691C001BC9DB /* EFTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFTheme.h; path = "EF RSS/Classes/Theme/EFTheme.h"; sourceTree = "<group>"; };
+		D32A9EE218C6691C001BC9DB /* EFTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFTheme.m; path = "EF RSS/Classes/Theme/EFTheme.m"; sourceTree = "<group>"; };
 		D350120C18C61DB300913EBC /* EF RSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EF RSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D350120F18C61DB300913EBC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D350121118C61DB300913EBC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -229,6 +232,8 @@
 		D350120318C61DB300913EBC = {
 			isa = PBXGroup;
 			children = (
+				D32A9EE118C6691C001BC9DB /* EFTheme.h */,
+				D32A9EE218C6691C001BC9DB /* EFTheme.m */,
 				D3545B1418C65295000747F1 /* EFStatusBarNotifier.h */,
 				D3545B1518C65295000747F1 /* EFStatusBarNotifier.m */,
 				D32155DB18C63A250091D3E1 /* Cell */,
@@ -524,6 +529,7 @@
 				D350127618C61E5F00913EBC /* CWStatusBarNotification.m in Sources */,
 				D3545B1018C64B80000747F1 /* EFRSSPersister.m in Sources */,
 				D350126D18C61E5F00913EBC /* AFHTTPRequestOperation.m in Sources */,
+				D32A9EE318C6691C001BC9DB /* EFTheme.m in Sources */,
 				D3545B1618C65295000747F1 /* EFStatusBarNotifier.m in Sources */,
 				D32155D018C62CA30091D3E1 /* RSSFeed.m in Sources */,
 				D350121E18C61DB300913EBC /* main.m in Sources */,
