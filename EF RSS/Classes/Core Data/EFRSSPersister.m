@@ -23,6 +23,7 @@
     managedItem.guid = item.guid;
     managedItem.media = item.media;
     managedItem.link = item.link;
+    managedItem.publicationDate = item.publicationDate;
   }
   NSError *error;
   //TODO: treat error accordinlgy

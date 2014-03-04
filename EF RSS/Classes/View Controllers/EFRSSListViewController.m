@@ -88,7 +88,7 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
     cacheName = [cacheName stringByAppendingString:searchTerm];
   }
   
-  NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+  NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"publicationDate" ascending:NO];
   [fetchRequest setSortDescriptors:@[sortDescriptor]];
  
 

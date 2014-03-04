@@ -7,8 +7,28 @@
 //
 
 #import "EFRSSParser.h"
+
+@interface EFRSSParser ()
+
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@end
 @implementation EFRSSParser
 
+
+- (NSDateFormatter *)dateFormatter {
+  if (_dateFormatter) return _dateFormatter;
+  
+  NSDateFormatter *dateFormatter = [NSDateFormatter new];
+  
+  // Tue, 04 Mar 2014 13:25:57 GMT
+  
+  NSLocale *locale = [[NSLocale alloc]
+                       initWithLocaleIdentifier:@"en_US_POSIX"];
+  [dateFormatter setLocale:locale];
+  [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
+  _dateFormatter = dateFormatter;
+  return _dateFormatter;
+}
 - (NSArray *)feedItemsFromXMLParser:(NSXMLParser *)XMLParser
 {
     self.rssItems = [NSMutableArray array];
@@ -83,6 +103,13 @@ didStartElement:(NSString *)elementName
     self.currentElement = kEFRSSXMLParserImage;
     self.currentElementValue = [[NSMutableString alloc] initWithString:[attributeDict objectForKey:@"url"]];
   }
+  else if ([elementName isEqualToString:kEFRSSXMLParserPubDate])
+  {
+    self.currentElement = kEFRSSXMLParserPubDate;
+    self.currentElementValue = [NSMutableString new];
+  }
+
+  
 }
 
 - (void)parser:(NSXMLParser *)parser
@@ -115,6 +142,10 @@ didStartElement:(NSString *)elementName
   } else if ([elementName isEqualToString:kEFRSSXMLParserImage])
   {
     self.currentRSSObject.media = [self.currentElementValue copy];
+  } else if ([elementName isEqualToString:kEFRSSXMLParserPubDate])
+  { // Tue, 04 Mar 2014 13:25:57 GMT
+    NSDate *date = [self.dateFormatter dateFromString:self.currentElementValue];
+    self.currentRSSObject.publicationDate = date;
   }
 }
 
