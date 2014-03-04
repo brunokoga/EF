@@ -7,7 +7,9 @@
 //
 
 #import "EFBaseViewController.h"
+#import "RSSItem.h"
 
 @interface EFDetailViewController : EFBaseViewController
+@property (strong, nonatomic) RSSItem *item;
 
 @end

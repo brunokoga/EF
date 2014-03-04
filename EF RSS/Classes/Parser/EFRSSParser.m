@@ -67,7 +67,8 @@ didStartElement:(NSString *)elementName
   }
   else if ([elementName isEqualToString:kEFRSSXMLParserLink])
   {
-    self.currentRSSObject.link = nil;
+    self.currentElement = kEFRSSXMLParserLink;
+    self.currentElementValue = [NSMutableString new];
   }
 }
 
@@ -90,6 +91,10 @@ didStartElement:(NSString *)elementName
   else if ([elementName isEqualToString:kEFRSSXMLParserSummary])
   {
     self.currentRSSObject.itemDescription = [self.currentElementValue copy];
+  }
+  else if ([elementName isEqualToString:kEFRSSXMLParserLink])
+  {
+    self.currentRSSObject.link = [self.currentElementValue copy];
   }
 }
 

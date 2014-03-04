@@ -8,20 +8,11 @@
 
 #import "EFDetailViewController.h"
 
-@interface EFDetailViewController ()
+@interface EFDetailViewController () <UIActionSheetDelegate>
 
 @end
 
 @implementation EFDetailViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -29,10 +20,37 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)actionButtonTouched:(id)sender {
+  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Open with...", @"")
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:@"Safari", @"More options", nil];
+  [actionSheet showInView:self.view];
+
 }
 
+#pragma mark - Action Sheet
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  NSURL *url = [NSURL URLWithString:self.item.link];
+  switch (buttonIndex) {
+    case 0: //safari
+      [[UIApplication sharedApplication] openURL:url];
+      break;
+    case 1: { //more options
+
+  UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[url]
+                                                                                       applicationActivities:nil];
+    [self presentViewController:activityViewController
+                       animated:YES
+                     completion:^{
+                         
+                     }];
+      break;
+    }
+    default:
+      break;
+  }
+  
+}
 @end

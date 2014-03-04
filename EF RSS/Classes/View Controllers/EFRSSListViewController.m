@@ -10,10 +10,12 @@
 #import "EFCoreDataManager.h"
 #import "EFRSSItemCell.h"
 #import "RSSItem.h"
+#import "EFDetailViewController.h"
 
 @interface EFRSSListViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 @end
 
@@ -26,6 +28,14 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
   [super viewDidLoad];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  if (self.selectedIndexPath) {
+    [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
+    self.selectedIndexPath = nil;
+  }
+}
 
 #pragma mark - Fetched Results Controller
 
@@ -60,6 +70,77 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
   return fetchedResultsController;
 }
 
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+  [self.tableView beginUpdates];
+  
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+  [self.tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+  switch (type) {
+    case NSFetchedResultsChangeInsert:
+      [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                            withRowAnimation:UITableViewRowAnimationAutomatic];
+      break;
+    case NSFetchedResultsChangeDelete:
+      [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                            withRowAnimation:UITableViewRowAnimationAutomatic];
+      break;
+    case NSFetchedResultsChangeUpdate: {
+      EFRSSItemCell *cell;
+      RSSItem *item;
+      item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+      cell = (EFRSSItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+      [self configureCell:cell forItem:item];
+      break;
+    }
+    case NSFetchedResultsChangeMove:
+      [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                            withRowAnimation:UITableViewRowAnimationAutomatic];
+      [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                            withRowAnimation:UITableViewRowAnimationAutomatic];
+      break;
+
+    default:
+      break;
+  }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type
+{
+  NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:sectionIndex];
+  switch (type) {
+    case NSFetchedResultsChangeInsert:
+      [self.tableView insertSections:indexSet
+                    withRowAnimation:UITableViewRowAnimationAutomatic];
+      break;
+    case NSFetchedResultsChangeDelete:
+      [self.tableView deleteSections:indexSet
+                    withRowAnimation:UITableViewRowAnimationAutomatic];
+      break;
+    default:
+      break;
+  }
+}
+
+#pragma Configure Cell
+
+- (void)configureCell:(EFRSSItemCell *)cell forItem:(RSSItem *)item {
+  cell.titleLabel.text = item.title;
+  cell.descriptionLabel.text = item.itemDescription;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -75,8 +156,7 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
   RSSItem *item;
   item = [self.fetchedResultsController objectAtIndexPath:indexPath];
   cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellRSSItemReuseIdentifier];
-  cell.titleLabel.text = item.title;
-  cell.descriptionLabel.text = item.itemDescription;
+  [self configureCell:cell forItem:item];
   
   return cell;
   
@@ -85,6 +165,28 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return [[self.fetchedResultsController sections] count];
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//  self.selectedIndexPath = indexPath;
+  [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+  self.selectedIndexPath = indexPath;
+  return indexPath;
+}
+#pragma mark - Segue
+
+static NSString * const ListToDetailSegue = @"ListToDetailSegue";
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:ListToDetailSegue])
+  {
+    EFDetailViewController *destinationViewController = segue.destinationViewController;
+    destinationViewController.item = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+  }
 }
 
 @end

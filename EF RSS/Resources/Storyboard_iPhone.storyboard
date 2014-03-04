@@ -85,11 +85,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kTableViewCellRSSItemReuseIdentifier" rowHeight="100" id="9u9-wZ-qez" customClass="EFRSSItemCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kTableViewCellRSSItemReuseIdentifier" rowHeight="100" id="9u9-wZ-qez" customClass="EFRSSItemCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9u9-wZ-qez" id="RYr-sn-098">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vY-Pr-zbP">
@@ -116,6 +116,7 @@
                                             <outlet property="descriptionLabel" destination="ICD-ea-94P" id="ccC-Jj-90E"/>
                                             <outlet property="imageView" destination="2vY-Pr-zbP" id="Tdb-W2-9es"/>
                                             <outlet property="titleLabel" destination="GWm-sx-p8w" id="vSp-az-mYv"/>
+                                            <segue destination="bCG-XN-E57" kind="push" identifier="ListToDetailSegue" id="1Ik-A0-SJC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -141,7 +142,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKM-5j-3eL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="-388"/>
+            <point key="canvasLocation" x="674" y="-306"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Dwf-hV-rb0">
+            <objects>
+                <viewController id="bCG-XN-E57" customClass="EFDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="odR-fZ-FbE"/>
+                        <viewControllerLayoutGuide type="bottom" id="xJu-8K-WyH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tq3-PC-aK0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5iM-3o-OHi">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="wu5-XU-ww7">
+                            <connections>
+                                <action selector="actionButtonTouched:" destination="bCG-XN-E57" id="RBE-g9-t4Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qbw-Vy-sDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1125" y="-184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RSN-26-i2h">
