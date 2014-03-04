@@ -11,6 +11,7 @@
 #import "EFHTTPSessionManager.h"
 #import "EFRSSParser.h"
 #import "EFRSSPersister.h"
+#import "EFStatusBarNotifier.h"
 
 @implementation EFRSSDownloaderManager
 
@@ -25,17 +26,26 @@
 }
 
 - (void)download {
-  
+  [self downloadWithCompletion:^(BOOL finished) {
+    
+  }];
+}
+
+- (void)downloadWithCompletion:(void (^)(BOOL finished))completion
+{
   NSURL *url = [NSURL URLWithString:[EFSettings feedURLString]];
   EFHTTPSessionManager *sessionManager = [EFHTTPSessionManager sharedManager];
   sessionManager.baseURL = url;
   
   [sessionManager feedWithSuccess:^(id responseObject) {
-            NSArray *feedItems = [[EFRSSParser new] feedItemsFromXMLParser:responseObject];
+    NSArray *feedItems = [[EFRSSParser new] feedItemsFromXMLParser:responseObject];
     [EFRSSPersister insertOrUpdateRSSItems:feedItems];
-    
+    [EFStatusBarNotifier displayContentDownloadedMessage];
+    completion(YES);
   } failure:^(NSError *error) {
-    //TODO: display Error;
+    [EFStatusBarNotifier displayConnectionErrorMessageWithError:error];
+    completion(YES);
   }];
+  
 }
 @end

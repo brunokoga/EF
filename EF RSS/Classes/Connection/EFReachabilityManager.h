@@ -9,5 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface EFReachabilityManager : NSObject
+/*
+ Not being used yet, since we're going to manually refresh
+ */
++ (instancetype)sharedInstance;
 
+- (void)start;
 @end

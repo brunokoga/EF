@@ -13,5 +13,6 @@
 + (instancetype)sharedManager;
 
 - (void)download;
+- (void)downloadWithCompletion:(void (^)(BOOL finished))completion;
 
 @end

@@ -12,11 +12,13 @@
 #import "RSSItem.h"
 #import "EFDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "EFRSSDownloaderManager.h"
 
 @interface EFRSSListViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -27,6 +29,7 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [self setUpPullToRefresh];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -36,6 +39,23 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
     [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
     self.selectedIndexPath = nil;
   }
+}
+
+- (void)setUpPullToRefresh
+{
+  UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+  refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh RSS Feed"];
+  [refreshControl addTarget:self action:@selector(refreshTable)
+           forControlEvents:UIControlEventValueChanged];
+  self.refreshControl = refreshControl;
+  [self.tableView addSubview:refreshControl];
+}
+
+- (void)refreshTable {
+  [self.refreshControl beginRefreshing];
+  [[EFRSSDownloaderManager sharedManager] downloadWithCompletion:^(BOOL finished) {
+    [self.refreshControl endRefreshing];
+  }];
 }
 
 #pragma mark - Fetched Results Controller

@@ -57,6 +57,7 @@
 		D3545B0D18C64AAD000747F1 /* EFNonPersistentRSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D3545B0C18C64AAD000747F1 /* EFNonPersistentRSSItem.m */; };
 		D3545B1018C64B80000747F1 /* EFRSSPersister.m in Sources */ = {isa = PBXBuildFile; fileRef = D3545B0F18C64B80000747F1 /* EFRSSPersister.m */; };
 		D3545B1318C651B3000747F1 /* EFReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3545B1218C651B3000747F1 /* EFReachabilityManager.m */; };
+		D3545B1618C65295000747F1 /* EFStatusBarNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = D3545B1518C65295000747F1 /* EFStatusBarNotifier.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,8 @@
 		D3545B0F18C64B80000747F1 /* EFRSSPersister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSPersister.m; path = "Classes/Core Data/EFRSSPersister.m"; sourceTree = "<group>"; };
 		D3545B1118C651B3000747F1 /* EFReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFReachabilityManager.h; path = Classes/Connection/EFReachabilityManager.h; sourceTree = "<group>"; };
 		D3545B1218C651B3000747F1 /* EFReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFReachabilityManager.m; path = Classes/Connection/EFReachabilityManager.m; sourceTree = "<group>"; };
+		D3545B1418C65295000747F1 /* EFStatusBarNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFStatusBarNotifier.h; path = "EF RSS/Classes/Notifier/EFStatusBarNotifier.h"; sourceTree = "<group>"; };
+		D3545B1518C65295000747F1 /* EFStatusBarNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFStatusBarNotifier.m; path = "EF RSS/Classes/Notifier/EFStatusBarNotifier.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +229,8 @@
 		D350120318C61DB300913EBC = {
 			isa = PBXGroup;
 			children = (
+				D3545B1418C65295000747F1 /* EFStatusBarNotifier.h */,
+				D3545B1518C65295000747F1 /* EFStatusBarNotifier.m */,
 				D32155DB18C63A250091D3E1 /* Cell */,
 				D350121718C61DB300913EBC /* EF RSS */,
 				D350123418C61DB400913EBC /* EF RSSTests */,
@@ -519,6 +524,7 @@
 				D350127618C61E5F00913EBC /* CWStatusBarNotification.m in Sources */,
 				D3545B1018C64B80000747F1 /* EFRSSPersister.m in Sources */,
 				D350126D18C61E5F00913EBC /* AFHTTPRequestOperation.m in Sources */,
+				D3545B1618C65295000747F1 /* EFStatusBarNotifier.m in Sources */,
 				D32155D018C62CA30091D3E1 /* RSSFeed.m in Sources */,
 				D350121E18C61DB300913EBC /* main.m in Sources */,
 				D350129518C6253A00913EBC /* EFDetailViewController.m in Sources */,
