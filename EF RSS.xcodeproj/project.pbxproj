@@ -12,6 +12,7 @@
 		D32155D018C62CA30091D3E1 /* RSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155CF18C62CA30091D3E1 /* RSSFeed.m */; };
 		D32155D318C62CA30091D3E1 /* RSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155D218C62CA30091D3E1 /* RSSItem.m */; };
 		D32155D718C62FA10091D3E1 /* EFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155D618C62FA10091D3E1 /* EFCoreDataManager.m */; };
+		D32155DA18C63A210091D3E1 /* EFRSSItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155D918C63A210091D3E1 /* EFRSSItemCell.m */; };
 		D350121018C61DB300913EBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350120F18C61DB300913EBC /* Foundation.framework */; };
 		D350121218C61DB300913EBC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350121118C61DB300913EBC /* CoreGraphics.framework */; };
 		D350121418C61DB300913EBC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350121318C61DB300913EBC /* UIKit.framework */; };
@@ -76,6 +77,8 @@
 		D32155D218C62CA30091D3E1 /* RSSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSItem.m; path = Classes/Entities/RSSItem.m; sourceTree = "<group>"; };
 		D32155D518C62FA10091D3E1 /* EFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFCoreDataManager.h; path = "Classes/Core Data/EFCoreDataManager.h"; sourceTree = "<group>"; };
 		D32155D618C62FA10091D3E1 /* EFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFCoreDataManager.m; path = "Classes/Core Data/EFCoreDataManager.m"; sourceTree = "<group>"; };
+		D32155D818C63A210091D3E1 /* EFRSSItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFRSSItemCell.h; path = "EF RSS/Classes/Views/EFRSSItemCell.h"; sourceTree = "<group>"; };
+		D32155D918C63A210091D3E1 /* EFRSSItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSItemCell.m; path = "EF RSS/Classes/Views/EFRSSItemCell.m"; sourceTree = "<group>"; };
 		D350120C18C61DB300913EBC /* EF RSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EF RSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D350120F18C61DB300913EBC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D350121118C61DB300913EBC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -200,9 +203,19 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		D32155DB18C63A250091D3E1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D32155D818C63A210091D3E1 /* EFRSSItemCell.h */,
+				D32155D918C63A210091D3E1 /* EFRSSItemCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		D350120318C61DB300913EBC = {
 			isa = PBXGroup;
 			children = (
+				D32155DB18C63A250091D3E1 /* Cell */,
 				D350121718C61DB300913EBC /* EF RSS */,
 				D350123418C61DB400913EBC /* EF RSSTests */,
 				D350120E18C61DB300913EBC /* Frameworks */,
@@ -503,6 +516,7 @@
 				D32155CA18C629B40091D3E1 /* EFSettingsViewController.m in Sources */,
 				D350128618C6206F00913EBC /* EFHTTPSessionManager.m in Sources */,
 				D350128F18C6250200913EBC /* EFBaseViewController.m in Sources */,
+				D32155DA18C63A210091D3E1 /* EFRSSItemCell.m in Sources */,
 				D350127118C61E5F00913EBC /* AFSecurityPolicy.m in Sources */,
 				D32155D718C62FA10091D3E1 /* EFCoreDataManager.m in Sources */,
 				D350126F18C61E5F00913EBC /* AFHTTPSessionManager.m in Sources */,

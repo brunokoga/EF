@@ -8,6 +8,8 @@
 
 #import "EFRSSListViewController.h"
 #import "EFCoreDataManager.h"
+#import "EFRSSItemCell.h"
+#import "RSSItem.h"
 
 @interface EFRSSListViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -22,8 +24,6 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellRSSItemReuseIdentifier];
-	// Do any additional setup after loading the view.
 }
 
 
@@ -71,11 +71,13 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
-  UITableViewCell *cell;
-  NSManagedObject *object;
-  object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  EFRSSItemCell *cell;
+  RSSItem *item;
+  item = [self.fetchedResultsController objectAtIndexPath:indexPath];
   cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellRSSItemReuseIdentifier];
-  cell.textLabel.text = [object valueForKey:@"title"];
+  cell.titleLabel.text = item.title;
+  cell.descriptionLabel.text = item.itemDescription;
+  
   return cell;
   
 }
