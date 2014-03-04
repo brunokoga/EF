@@ -40,6 +40,7 @@
 		D350127C18C61E5F00913EBC /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D350126818C61E5F00913EBC /* UIProgressView+AFNetworking.m */; };
 		D350127D18C61E5F00913EBC /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D350126A18C61E5F00913EBC /* UIRefreshControl+AFNetworking.m */; };
 		D350127E18C61E5F00913EBC /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D350126C18C61E5F00913EBC /* UIWebView+AFNetworking.m */; };
+		D350128218C61EF400913EBC /* EFSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D350128118C61EF400913EBC /* EFSettings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		D350126A18C61E5F00913EBC /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		D350126B18C61E5F00913EBC /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		D350126C18C61E5F00913EBC /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		D350128018C61EF400913EBC /* EFSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFSettings.h; path = Classes/Settings/EFSettings.h; sourceTree = "<group>"; };
+		D350128118C61EF400913EBC /* EFSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFSettings.m; path = Classes/Settings/EFSettings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 				D350122618C61DB300913EBC /* Images.xcassets */,
 				D350122318C61DB300913EBC /* EF_RSS.xcdatamodeld */,
 				D350121818C61DB300913EBC /* Supporting Files */,
+				D350128018C61EF400913EBC /* EFSettings.h */,
+				D350128118C61EF400913EBC /* EFSettings.m */,
 			);
 			path = "EF RSS";
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				D350127218C61E5F00913EBC /* AFURLConnectionOperation.m in Sources */,
 				D350127118C61E5F00913EBC /* AFSecurityPolicy.m in Sources */,
 				D350126F18C61E5F00913EBC /* AFHTTPSessionManager.m in Sources */,
+				D350128218C61EF400913EBC /* EFSettings.m in Sources */,
 				D350127318C61E5F00913EBC /* AFURLRequestSerialization.m in Sources */,
 				D350127518C61E5F00913EBC /* AFURLSessionManager.m in Sources */,
 				D350127E18C61E5F00913EBC /* UIWebView+AFNetworking.m in Sources */,
