@@ -11,13 +11,6 @@
 
 @interface EFRSSParser : NSObject <NSXMLParserDelegate>
 
-@property (nonatomic, strong) NSMutableArray *rssItems;
-@property (nonatomic, strong) EFNonPersistentRSSItem *currentRSSObject;
-@property (nonatomic, strong) NSString *currentElement;
-@property (nonatomic, strong) NSMutableString *currentElementValue;
-
-@property (nonatomic, copy) NSString *entryElementName;
-
-- (NSArray *)feedItemsFromXMLParser:(NSXMLParser *)XMLParser;
+- (NSDictionary *)feedItemsFromXMLParser:(NSXMLParser *)XMLParser;
 
 @end

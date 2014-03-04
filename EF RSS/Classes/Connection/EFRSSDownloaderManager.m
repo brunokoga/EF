@@ -38,7 +38,7 @@
   sessionManager.baseURL = url;
   
   [sessionManager feedWithSuccess:^(id responseObject) {
-    NSArray *feedItems = [[EFRSSParser new] feedItemsFromXMLParser:responseObject];
+    NSDictionary *feedItems = [[EFRSSParser new] feedItemsFromXMLParser:responseObject];
     [EFRSSPersister insertOrUpdateRSSItems:feedItems];
     [EFStatusBarNotifier displayContentDownloadedMessage];
     completion(YES);

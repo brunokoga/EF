@@ -10,6 +10,17 @@
 
 @interface EFRSSParser ()
 
+
+@property (nonatomic, strong) NSMutableArray *rssItems;
+@property (nonatomic, strong) EFNonPersistentRSSItem *currentRSSObject;
+@property (nonatomic, strong) NSString *currentElement;
+@property (nonatomic, strong) NSMutableString *currentElementValue;
+@property (nonatomic, strong) NSString *channelName;
+@property (nonatomic, copy) NSString *entryElementName;
+@property (nonatomic, copy) NSString *parentElementName;
+
+@property (nonatomic) BOOL isParsingParent;
+
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @end
 @implementation EFRSSParser
@@ -29,7 +40,7 @@
   _dateFormatter = dateFormatter;
   return _dateFormatter;
 }
-- (NSArray *)feedItemsFromXMLParser:(NSXMLParser *)XMLParser
+- (NSDictionary *)feedItemsFromXMLParser:(NSXMLParser *)XMLParser
 {
     self.rssItems = [NSMutableArray array];
     if ([XMLParser isKindOfClass:[NSXMLParser class]])
@@ -37,7 +48,8 @@
         XMLParser.delegate = self;
         [XMLParser parse];
     }
-    return [self.rssItems copy];
+  NSArray *rssCopy = [self.rssItems copy];
+  return @{self.channelName: rssCopy};
 }
 
 
@@ -63,6 +75,7 @@ static NSString *kEFRSSXMLParserPubDate = @"pubDate";
   if (self)
   {
     self.entryElementName = @"item";
+    self.parentElementName = @"channel";
   }
   return self;
 }
@@ -74,10 +87,17 @@ didStartElement:(NSString *)elementName
     attributes:(NSDictionary *)attributeDict
 {
   //TODO: refactor this to be something smarter :)
+  if ([elementName isEqualToString:self.parentElementName])
+  {
+    self.isParsingParent = YES;
+  }
+  
   if ([elementName isEqualToString:self.entryElementName])
   {
     self.currentRSSObject = [EFNonPersistentRSSItem new];
+    self.isParsingParent = NO;
   }
+  
   else if ([elementName isEqualToString:kEFRSSXMLParserTitle])
   {
     self.currentElement = kEFRSSXMLParserTitle;
@@ -126,7 +146,11 @@ didStartElement:(NSString *)elementName
   }
   else if ([elementName isEqualToString:kEFRSSXMLParserTitle])
   {
-    self.currentRSSObject.title = [self.currentElementValue copy];
+    if (self.isParsingParent) {
+      self.channelName = [self.currentElementValue copy];
+    } else {
+      self.currentRSSObject.title = [self.currentElementValue copy];
+    }
   }
   else if ([elementName isEqualToString:kEFRSSXMLParserSummary])
   {

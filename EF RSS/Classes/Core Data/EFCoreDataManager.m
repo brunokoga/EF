@@ -81,7 +81,27 @@
 
 - (id)newFeedWithFeedURL:(NSString *)feedURL {
   
-  return nil;
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"feedURL LIKE %@", feedURL];
+  
+  NSArray *result;
+  
+  NSFetchRequest *fetchRequest = [NSFetchRequest new];
+  [fetchRequest setEntity:[NSEntityDescription entityForName:@"RSSFeed"
+                                      inManagedObjectContext:self.managedObjectContext]];
+  
+  [fetchRequest setPredicate:predicate];
+  
+  
+  NSError *error;
+  
+  result = [self.managedObjectContext executeFetchRequest:fetchRequest
+                                                    error:&error];
+  
+  if ([result count] == 1) {
+    return result[0];
+  }
+  return [self newFeed];
+
 }
 
 - (id)newItemWithGUID:(NSString *)guid {

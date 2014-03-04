@@ -26,6 +26,7 @@ static NSString * const kFeedDefaultURLString = @"http://feeds.bbci.co.uk/news/r
 + (void)setFeedURLString:(NSString *)feedURLString
 {
   [[NSUserDefaults standardUserDefaults] setObject:feedURLString forKey:kSettingsFeedURLStringKey];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSString *)defaultFeedURLString

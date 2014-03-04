@@ -10,6 +10,6 @@
 
 @interface EFRSSPersister : NSObject
 
-+ (void)insertOrUpdateRSSItems:(NSArray *)items;
++ (void)insertOrUpdateRSSItems:(NSDictionary *)items;
 
 @end

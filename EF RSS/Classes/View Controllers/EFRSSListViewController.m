@@ -10,9 +10,11 @@
 #import "EFCoreDataManager.h"
 #import "EFRSSItemCell.h"
 #import "RSSItem.h"
+#import "RSSFeed.h"
 #import "EFDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "EFRSSDownloaderManager.h"
+#import "EFSettings.h"
 
 @interface EFRSSListViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -41,6 +43,15 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
     [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
     self.selectedIndexPath = nil;
   }
+  [self setTitleAccordingToSettings];
+  self.fetchedResultsController = nil;
+  self.fetchedResultsController = [self fetchedResultsController];
+}
+
+- (void)setTitleAccordingToSettings {
+  NSString *feedURL = [EFSettings feedURLString];
+  RSSFeed *feed = [[EFCoreDataManager sharedManager] newFeedWithFeedURL:feedURL];
+  self.title = feed.title;
 }
 
 - (void)setUpPullToRefresh
@@ -77,21 +88,26 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
   [fetchRequest setEntity:[NSEntityDescription entityForName:@"RSSItem"
                                       inManagedObjectContext:managedObjectContext]];
 
-    NSString *cacheName = @"RSSCache";
+  NSString *feedURL = [EFSettings feedURLString];
+  NSString *cacheName = [NSString stringWithFormat:@"RSSCache-%@", feedURL];
+  
+  NSPredicate *rssFeedPredicate = [NSPredicate predicateWithFormat:@"feed.feedURL LIKE %@", feedURL];
+  
   if ([searchTerm length] > 0) {
     NSPredicate *searchInTitlePredicate = [NSPredicate predicateWithFormat:@"title contains[cd] %@", searchTerm];
     NSPredicate *searchInDescriptionPredicate = [NSPredicate predicateWithFormat:@"itemDescription contains[cd] %@", searchTerm];
     NSCompoundPredicate *compoundPredicate = [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType
-                                                                         subpredicates:@[searchInTitlePredicate, searchInDescriptionPredicate]];
+                                                                         subpredicates:@[rssFeedPredicate, searchInTitlePredicate, searchInDescriptionPredicate]];
 
     [fetchRequest setPredicate:compoundPredicate];
     cacheName = [cacheName stringByAppendingString:searchTerm];
+  } else {
+    [fetchRequest setPredicate:rssFeedPredicate];
   }
   
   NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"publicationDate" ascending:NO];
   [fetchRequest setSortDescriptors:@[sortDescriptor]];
  
-
   NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                                              managedObjectContext:managedObjectContext
                                                                                                sectionNameKeyPath:nil
@@ -108,6 +124,7 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
     //TODO: treat the error accordingly
   }
   [self.tableView reloadData];
+  [self setTitleAccordingToSettings];
   
   return fetchedResultsController;
   
@@ -117,6 +134,7 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+  [self setTitleAccordingToSettings];
   [self.tableView beginUpdates];
   
 }
