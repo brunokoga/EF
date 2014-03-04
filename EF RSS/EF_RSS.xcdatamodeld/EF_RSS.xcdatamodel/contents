@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="RSSFeed" syncable="YES">
+    <entity name="RSSFeed" representedClassName="RSSFeed" syncable="YES">
         <attribute name="copyright" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feedDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feedURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,7 +11,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RSSItem" inverseName="feed" inverseEntity="RSSItem" syncable="YES"/>
     </entity>
-    <entity name="RSSItem" syncable="YES">
+    <entity name="RSSItem" representedClassName="RSSItem" syncable="YES">
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="itemDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,7 +21,7 @@
         <relationship name="feed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RSSFeed" inverseName="items" inverseEntity="RSSFeed" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RSSItem" positionX="160" positionY="192" width="128" height="148"/>
-        <element name="RSSFeed" positionX="-234" positionY="234" width="128" height="178"/>
+        <element name="RSSFeed" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RSSItem" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

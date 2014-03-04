@@ -7,6 +7,7 @@
 //
 
 #import "EFAppDelegate.h"
+#import "EFCoreDataManager.h"
 #import "EFRSSDownloaderManager.h"
 
 @implementation EFAppDelegate
@@ -17,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  //initializes core data
+  [[EFCoreDataManager sharedManager] initializeCoreDataStack];
   //downloads the rss feed
   [[EFRSSDownloaderManager sharedManager] download];
   

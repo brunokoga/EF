@@ -31,9 +31,7 @@
   [self GET:@""
  parameters:nil
     success:^(NSURLSessionDataTask *task, id responseObject) {
-      
-      //TODO: we're receiving a NSXMLParser here
-      
+      success(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
       failure(error);
     }];

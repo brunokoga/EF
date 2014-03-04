@@ -24,4 +24,6 @@
  Stores the feed url string
  */
 + (void)setFeedURLString:(NSString *)feedURLString;
+
++ (NSString *)defaultFeedURLString;
 @end

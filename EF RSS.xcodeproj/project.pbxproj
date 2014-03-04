@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D32155CA18C629B40091D3E1 /* EFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155C918C629B40091D3E1 /* EFSettingsViewController.m */; };
+		D32155CD18C62C570091D3E1 /* EFRSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155CC18C62C570091D3E1 /* EFRSSParser.m */; };
+		D32155D018C62CA30091D3E1 /* RSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155CF18C62CA30091D3E1 /* RSSFeed.m */; };
+		D32155D318C62CA30091D3E1 /* RSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155D218C62CA30091D3E1 /* RSSItem.m */; };
+		D32155D718C62FA10091D3E1 /* EFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D32155D618C62FA10091D3E1 /* EFCoreDataManager.m */; };
 		D350121018C61DB300913EBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350120F18C61DB300913EBC /* Foundation.framework */; };
 		D350121218C61DB300913EBC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350121118C61DB300913EBC /* CoreGraphics.framework */; };
 		D350121418C61DB300913EBC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D350121318C61DB300913EBC /* UIKit.framework */; };
@@ -61,6 +66,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D32155C818C629B40091D3E1 /* EFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFSettingsViewController.h; path = "Classes/View Controllers/EFSettingsViewController.h"; sourceTree = "<group>"; };
+		D32155C918C629B40091D3E1 /* EFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFSettingsViewController.m; path = "Classes/View Controllers/EFSettingsViewController.m"; sourceTree = "<group>"; };
+		D32155CB18C62C570091D3E1 /* EFRSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFRSSParser.h; path = Classes/Parser/EFRSSParser.h; sourceTree = "<group>"; };
+		D32155CC18C62C570091D3E1 /* EFRSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFRSSParser.m; path = Classes/Parser/EFRSSParser.m; sourceTree = "<group>"; };
+		D32155CE18C62CA30091D3E1 /* RSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSFeed.h; path = Classes/Entities/RSSFeed.h; sourceTree = "<group>"; };
+		D32155CF18C62CA30091D3E1 /* RSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSFeed.m; path = Classes/Entities/RSSFeed.m; sourceTree = "<group>"; };
+		D32155D118C62CA30091D3E1 /* RSSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSItem.h; path = Classes/Entities/RSSItem.h; sourceTree = "<group>"; };
+		D32155D218C62CA30091D3E1 /* RSSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSItem.m; path = Classes/Entities/RSSItem.m; sourceTree = "<group>"; };
+		D32155D518C62FA10091D3E1 /* EFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EFCoreDataManager.h; path = "Classes/Core Data/EFCoreDataManager.h"; sourceTree = "<group>"; };
+		D32155D618C62FA10091D3E1 /* EFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EFCoreDataManager.m; path = "Classes/Core Data/EFCoreDataManager.m"; sourceTree = "<group>"; };
 		D350120C18C61DB300913EBC /* EF RSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EF RSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D350120F18C61DB300913EBC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D350121118C61DB300913EBC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -159,6 +174,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D32155C718C629A20091D3E1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D350128D18C6250200913EBC /* EFBaseViewController.h */,
+				D350128E18C6250200913EBC /* EFBaseViewController.m */,
+				D350129018C6252D00913EBC /* EFRSSListViewController.h */,
+				D350129118C6252D00913EBC /* EFRSSListViewController.m */,
+				D350129318C6253A00913EBC /* EFDetailViewController.h */,
+				D350129418C6253A00913EBC /* EFDetailViewController.m */,
+				D32155C818C629B40091D3E1 /* EFSettingsViewController.h */,
+				D32155C918C629B40091D3E1 /* EFSettingsViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D32155D418C62CAE0091D3E1 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D32155D118C62CA30091D3E1 /* RSSItem.h */,
+				D32155D218C62CA30091D3E1 /* RSSItem.m */,
+				D32155CE18C62CA30091D3E1 /* RSSFeed.h */,
+				D32155CF18C62CA30091D3E1 /* RSSFeed.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		D350120318C61DB300913EBC = {
 			isa = PBXGroup;
 			children = (
@@ -193,21 +234,21 @@
 		D350121718C61DB300913EBC /* EF RSS */ = {
 			isa = PBXGroup;
 			children = (
+				D32155D518C62FA10091D3E1 /* EFCoreDataManager.h */,
+				D32155D618C62FA10091D3E1 /* EFCoreDataManager.m */,
 				D350127F18C61E6400913EBC /* Libs */,
 				D350122018C61DB300913EBC /* EFAppDelegate.h */,
 				D350122118C61DB300913EBC /* EFAppDelegate.m */,
 				D350122618C61DB300913EBC /* Images.xcassets */,
 				D350122318C61DB300913EBC /* EF_RSS.xcdatamodeld */,
+				D32155D418C62CAE0091D3E1 /* Entities */,
 				D350121818C61DB300913EBC /* Supporting Files */,
 				D350128318C6202F00913EBC /* Settings */,
 				D350128718C6207400913EBC /* Connection */,
 				D350128C18C624E500913EBC /* Storyboards */,
-				D350128D18C6250200913EBC /* EFBaseViewController.h */,
-				D350128E18C6250200913EBC /* EFBaseViewController.m */,
-				D350129018C6252D00913EBC /* EFRSSListViewController.h */,
-				D350129118C6252D00913EBC /* EFRSSListViewController.m */,
-				D350129318C6253A00913EBC /* EFDetailViewController.h */,
-				D350129418C6253A00913EBC /* EFDetailViewController.m */,
+				D32155C718C629A20091D3E1 /* View Controllers */,
+				D32155CB18C62C570091D3E1 /* EFRSSParser.h */,
+				D32155CC18C62C570091D3E1 /* EFRSSParser.m */,
 			);
 			path = "EF RSS";
 			sourceTree = "<group>";
@@ -448,17 +489,22 @@
 				D350127918C61E5F00913EBC /* UIAlertView+AFNetworking.m in Sources */,
 				D350127618C61E5F00913EBC /* CWStatusBarNotification.m in Sources */,
 				D350126D18C61E5F00913EBC /* AFHTTPRequestOperation.m in Sources */,
+				D32155D018C62CA30091D3E1 /* RSSFeed.m in Sources */,
 				D350121E18C61DB300913EBC /* main.m in Sources */,
 				D350129518C6253A00913EBC /* EFDetailViewController.m in Sources */,
 				D350126E18C61E5F00913EBC /* AFHTTPRequestOperationManager.m in Sources */,
+				D32155CD18C62C570091D3E1 /* EFRSSParser.m in Sources */,
 				D350127018C61E5F00913EBC /* AFNetworkReachabilityManager.m in Sources */,
 				D350127B18C61E5F00913EBC /* UIImageView+AFNetworking.m in Sources */,
 				D350127418C61E5F00913EBC /* AFURLResponseSerialization.m in Sources */,
 				D350127818C61E5F00913EBC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D350127218C61E5F00913EBC /* AFURLConnectionOperation.m in Sources */,
+				D32155D318C62CA30091D3E1 /* RSSItem.m in Sources */,
+				D32155CA18C629B40091D3E1 /* EFSettingsViewController.m in Sources */,
 				D350128618C6206F00913EBC /* EFHTTPSessionManager.m in Sources */,
 				D350128F18C6250200913EBC /* EFBaseViewController.m in Sources */,
 				D350127118C61E5F00913EBC /* AFSecurityPolicy.m in Sources */,
+				D32155D718C62FA10091D3E1 /* EFCoreDataManager.m in Sources */,
 				D350126F18C61E5F00913EBC /* AFHTTPSessionManager.m in Sources */,
 				D350128218C61EF400913EBC /* EFSettings.m in Sources */,
 				D350127318C61E5F00913EBC /* AFURLRequestSerialization.m in Sources */,

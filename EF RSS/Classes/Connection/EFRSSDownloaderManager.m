@@ -9,6 +9,7 @@
 #import "EFRSSDownloaderManager.h"
 #import "EFSettings.h"
 #import "EFHTTPSessionManager.h"
+#import "EFRSSParser.h"
 
 @implementation EFRSSDownloaderManager
 
@@ -29,6 +30,8 @@
   sessionManager.baseURL = url;
   
   [sessionManager feedWithSuccess:^(id responseObject) {
+            NSArray *feedItems = [[EFRSSParser new] feedItemsFromXMLParser:responseObject];
+    
     //TODO: save to Core Data and notificates table view
   } failure:^(NSError *error) {
     //TODO: display Error;
