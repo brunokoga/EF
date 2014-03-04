@@ -22,6 +22,7 @@
     managedItem.itemDescription = item.itemDescription;
     managedItem.guid = item.guid;
     managedItem.media = item.media;
+    managedItem.link = item.link;
   }
   NSError *error;
   //TODO: treat error accordinlgy

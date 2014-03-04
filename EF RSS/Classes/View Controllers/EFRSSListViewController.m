@@ -14,7 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "EFRSSDownloaderManager.h"
 
-@interface EFRSSListViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface EFRSSListViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
@@ -30,6 +30,8 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
 {
   [super viewDidLoad];
   [self setUpPullToRefresh];
+  //hide search bar
+  [self.tableView setContentOffset:CGPointMake(0, 44.0)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -61,34 +63,57 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
 #pragma mark - Fetched Results Controller
 
 //singleton + lazy load
-- (NSFetchedResultsController *)fetchedResultsController {
+
+- (NSFetchedResultsController *)fetchedResultsControllerForSearchTerm:(NSString *)searchTerm
+{
   if (_fetchedResultsController) {
     return _fetchedResultsController;
   }
-  
   NSManagedObjectContext *managedObjectContext = [[EFCoreDataManager sharedManager] managedObjectContext];
-  
-  NSFetchRequest *fetchRequest = nil;
-  fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RSSItem"];
+
+  //if there is a search term, then we add the search predicates
+    NSFetchRequest *fetchRequest = nil;
+  fetchRequest = [NSFetchRequest new];
+  [fetchRequest setEntity:[NSEntityDescription entityForName:@"RSSItem"
+                                      inManagedObjectContext:managedObjectContext]];
+
+    NSString *cacheName = @"RSSCache";
+  if ([searchTerm length] > 0) {
+    NSPredicate *searchInTitlePredicate = [NSPredicate predicateWithFormat:@"title contains[cd] %@", searchTerm];
+    NSPredicate *searchInDescriptionPredicate = [NSPredicate predicateWithFormat:@"itemDescription contains[cd] %@", searchTerm];
+    NSCompoundPredicate *compoundPredicate = [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType
+                                                                         subpredicates:@[searchInTitlePredicate, searchInDescriptionPredicate]];
+
+    [fetchRequest setPredicate:compoundPredicate];
+    cacheName = [cacheName stringByAppendingString:searchTerm];
+  }
   
   NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
   [fetchRequest setSortDescriptors:@[sortDescriptor]];
-  
+ 
+
   NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                                              managedObjectContext:managedObjectContext
                                                                                                sectionNameKeyPath:nil
-                                                                                                        cacheName:@"RSSCache"];
+                                                                                                        cacheName:cacheName];
+  
   
   [self setFetchedResultsController:fetchedResultsController];
-  self.fetchedResultsController.delegate = self;
+  fetchedResultsController.delegate = self;
   
   NSError *error;
-  [self.fetchedResultsController performFetch:&error];
+
+  [fetchedResultsController performFetch:&error];
   if (error) {
     //TODO: treat the error accordingly
   }
+  [self.tableView reloadData];
   
   return fetchedResultsController;
+  
+}
+- (NSFetchedResultsController *)fetchedResultsController {
+  return [self fetchedResultsControllerForSearchTerm:nil];
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -198,6 +223,24 @@ static NSString * const kTableViewCellRSSItemReuseIdentifier = @"kTableViewCellR
   self.selectedIndexPath = indexPath;
   return indexPath;
 }
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+  [self setSearchTerm:searchText];
+}
+
+- (void)setSearchTerm:(NSString *)searchTerm {
+  self.fetchedResultsController = nil;
+  [self fetchedResultsControllerForSearchTerm:searchTerm];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
+  [searchBar setText:@""];
+  [self setSearchTerm:@""];
+  [searchBar resignFirstResponder];
+}
+
 #pragma mark - Segue
 
 static NSString * const ListToDetailSegue = @"ListToDetailSegue";

@@ -36,23 +36,25 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
   NSURL *url = [NSURL URLWithString:self.item.link];
-  switch (buttonIndex) {
-    case 0: //safari
-      [[UIApplication sharedApplication] openURL:url];
-      break;
-    case 1: { //more options
-
-  UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[url]
-                                                                                       applicationActivities:nil];
-    [self presentViewController:activityViewController
-                       animated:YES
-                     completion:^{
-                         
-                     }];
-      break;
+  if ([[url absoluteString] length] > 0) {
+    switch (buttonIndex) {
+      case 0: //safari
+        [[UIApplication sharedApplication] openURL:url];
+        break;
+      case 1: { //more options
+        
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[url]
+                                                                                             applicationActivities:nil];
+        [self presentViewController:activityViewController
+                           animated:YES
+                         completion:^{
+                           
+                         }];
+        break;
+      }
+      default:
+        break;
     }
-    default:
-      break;
   }
   
 }
